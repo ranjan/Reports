@@ -55,6 +55,10 @@ report()
   log_cmd "cat $base_foreman/foreman_tasks_tasks | wc -l"
   log "---"
   log
+  log " **Total Task sort by action"
+  log_cmd "cat $base_foreman/foreman_tasks_tasks | sed '1,3d' | cut -d\| -f3 | grep Actions | sort | uniq -c | sort -nr"
+  log "---"
+  log
   log " **Paused Tasks"
   log_cmd "cat $base_foreman/foreman_tasks_tasks| egrep 'paused' | wc -l"
   log "---"
